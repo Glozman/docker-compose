@@ -1,0 +1,20 @@
+version: '3'
+services:
+  node1:
+    container_name: node1
+    build:
+      context: .
+    ports:
+      - "8080:3000"
+    volumes:
+      - .:/app
+    command: node index.js
+  node2:
+    container_name: node2
+    build:
+      context: .
+    ports:
+      - "4040:4000"
+    volumes:
+      - .:/app
+    command: node index2.js
