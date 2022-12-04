@@ -1,20 +1,45 @@
 version: '3'
 services:
-  node1:
-    container_name: node1
+  get1:
+    container_name: get1
+    image: stephan/myapp
     build:
       context: .
     ports:
-      - "8080:3000"
+      - "3000"
     volumes:
       - .:/app
-    command: node index.js
-  node2:
-    container_name: node2
+  get2:
+    container_name: get2
+    image: stephan/myapp
     build:
       context: .
     ports:
-      - "4040:4000"
+      - "3000"
     volumes:
       - .:/app
-    command: node index2.js
+  post1:
+    container_name: post1
+    image: stephan/myapp
+    build:
+      context: .
+    ports:
+      - "3000"
+    volumes:
+      - .:/app
+  post2:
+    container_name: post2
+    image: stephan/myapp
+    build:
+      context: .
+    ports:
+      - "3000"
+    volumes:
+      - .:/app
+  nginx:
+      restart: always
+      build:
+        context: ./nginx
+      ports:
+        - "80:80"
+
